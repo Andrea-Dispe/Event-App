@@ -1,6 +1,6 @@
-  const mongoose = require('mongoose');
-  // create a mongoose schema object
-  // the mongoose schema defines what each post must have
+const mongoose = require('mongoose');
+// create a mongoose schema object
+// the mongoose schema defines what each post must have
 const postSchema = mongoose.Schema({
   title: String,
   message: String,
@@ -17,7 +17,7 @@ const postSchema = mongoose.Schema({
   }
 })
 
-exports.PostMessage = mongoose.model('PostMessage', postSchema);
+module.exports = mongoose.model('PostMessage', postSchema);
 
 // import mongoose from 'mongoose';
 

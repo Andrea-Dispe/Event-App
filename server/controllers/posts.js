@@ -12,20 +12,24 @@ exports.getPosts = async (req, res) => {
     res.status(200).json(postMessages);
 
   } catch (error) {
-    res.status(404).json({error: error.message})
+    res.status(404).json({message: error.message})
   }
 };
 
-// export const getPosts = async (req, res) => {
-//   try {
-//       const postMessages = await PostMessage.find();
 
-//       res.status(200).json(postMessages);
-//   } catch (error) {
-//       res.status(404).json({ message: error.message });
-//   }
-// }
 
-exports.createPost = (req, res) => {
-  res.send('post createdx ')
+exports.createPost = async (req, res) => {
+  // get the post from the body send by the client
+  const body = req.body;
+  // save the message into
+  const newPost = new PostMessage(post);
+  try {
+    // save the message into the DB, therfore it requires the await
+    await newPost.save();
+    res.status(201).json(newPost)
+  } catch (error) {
+    res.status(409).json({
+      message: error.message
+    }) 
+  }
 };
