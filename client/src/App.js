@@ -1,11 +1,8 @@
-import React from 'react;'
-import './App.css';
-// import the UI component needed from the material UI
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core'
+import React from 'react';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div>
       <h1>App</h1>
     </div>
   );
