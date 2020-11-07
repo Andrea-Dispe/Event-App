@@ -12,5 +12,9 @@ import reducers from './reducers'
 const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 ReactDOM.render(
-  <App /> , document.getElementById('root')
+  // in order to use Redux wrap the app with the Provider
+  <Provider store={store}>
+    <App />
+  </Provider>,
+   document.getElementById('root')
 );
