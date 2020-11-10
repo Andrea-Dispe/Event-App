@@ -1,11 +1,23 @@
 import React from 'react';
+import { textField, Button, Typography, Paper } from '@material-ui/core';
 import useStyles from './styles'
+
 
 
 const Form = () => {
   const classes = useStyles();
+  const handleSubmit = () => {
+
+  }
   return (
-    <h1>FORM</h1>
+    <Paper  className={classes.paper}>
+      <form autocomplete="off" noValidate className={classes.form} onSubmit={handleSubmit}>
+        <Typography>
+          
+        </Typography>
+      </form>
+
+    </Paper>
   );
 }
 

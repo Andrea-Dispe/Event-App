@@ -6,13 +6,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+
 import App from './App';
-import reducers from './reducers'
+import { reducers } from './reducers'
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 ReactDOM.render(
-  // in order to use Redux wrap the app with the Provider
+  // in order to use Redux wrap the app within the Provider and pass the store as prop
   <Provider store={store}>
     <App />
   </Provider>,

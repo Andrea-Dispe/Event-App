@@ -8,17 +8,19 @@ const app = express();
 // middlewre routes
 // the first parameter is going to add a prefix tox  the postRoutes and
 // make the /posts the default ergo the ("/")
-app.use('/posts', postRoutes);
 app.use(bodyParser.json({limit: '30mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
 app.use(cors());
 
+app.use('/posts', postRoutes);
+
+// Connectiing to ATLAS mongoDB
 const CONNECTION_URL = "mongodb+srv://Mr_Almond:projektor@cluster0.u9qly.mongodb.net/<dbname>?retryWrites=true&w=majority"
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 // mongoose.connect is a function that accepts 2 different parameters
 // the MongodDB connection path and an object with 2 property to avoid
 // some warnings in the console
-// mongoose.connect returna promise
+// mongoose.connect returns a promise
 mongoose.connect(CONNECTION_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -29,6 +31,7 @@ mongoose.connect(CONNECTION_URL, {
     }
   );
 })
+
 .catch(error => {
   console.log(error)
   console.error(error.message)
