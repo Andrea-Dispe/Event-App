@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 // Redux
 // Provider is going to keep track of the store (a sort of global state)
 // and allows us to access it from anywhere in the app
