@@ -19,17 +19,36 @@ exports.getPosts = async (req, res) => {
 
 
 exports.createPost = async (req, res) => {
-  // get the post from the body send by the client
-  const body = req.body;
-  // save the message into
+  const post = req.body;
   const newPost = new PostMessage(post);
   try {
-    // save the message into the DB, therfore it requires the await
     await newPost.save();
     res.status(201).json(newPost)
   } catch (error) {
     res.status(409).json({
       message: error.message
-    }) 
+    })
   }
 };
+
+
+exports.createPost = async (req, res) => {
+  const { title, message, selectedFile, creator, tags } = req.body;
+  const newPostMessage = new PostMessage({ title, message, selectedFile, creator, tags })
+  try {
+      await newPostMessage.save();
+      res.status(201).json(newPostMessage );
+  } catch (error) {
+      res.status(409).json({ message: error.message });
+  }
+}
+
+exports.updatePost = async(req, res) => {
+  // you can rename the property you deconstruct
+  const { id: _id } = req.params;
+  const post = req.body;
+  // check if the _id is really a valid mongoose object id
+  if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('no post with that id')
+  const updatedPost = await ostMessage.findByIdAndUpdate(_id, post, {new: true});
+  res.json(updatedPost)
+}
