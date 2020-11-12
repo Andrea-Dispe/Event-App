@@ -29,7 +29,7 @@ const Post = ({ post , setCurrentId }) => {
         </Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button style={{ color: "white" }} size="small" onClick={() => setCurrentId(post._id)>
+        <Button style={{ color: "white" }} size="small" onClick={() => setCurrentId(post._id)}>
           <MoreHorizIcon fontSize="default" />
         </Button>
       </div>
@@ -38,23 +38,24 @@ const Post = ({ post , setCurrentId }) => {
           {post.tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
-    <CardContent>
-      <Typography className={classes.title} variant="h5" gutterBottom>
-        {post.message}
-      </Typography>
+      <CardContent>
+        <Typography className={classes.title} variant="h5" gutterBottom>
+          {post.message}
+        </Typography>
       </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => {}}>
-          <ThumbUpAltIcon fontSize="small" />
-          Like
-          {post.likeCount}
-        </Button>
-        <Button size="small" color="primary" onClick={() => {}}>
-          <DeleteIcon fontSize="small" />
-          Delete
-        </Button>
+    <CardActions className={classes.cardActions}>
+      <Button size="small" color="primary" onClick={() => {}}>
+        <ThumbUpAltIcon fontSize="small" />
+        Like
+        {post.likeCount}
+      </Button>
+      <Button size="small" color="primary" onClick={() => {}}>
+        <DeleteIcon fontSize="small" />
+        Delete
+      </Button>
 
-      </CardActions>
+    </CardActions>
+
     </Card>
   );
 };
