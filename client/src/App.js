@@ -17,7 +17,7 @@ const App = () => {
   // use useEffect to dispacth an action
 useEffect(() => {
   dispatch(getPosts())
-}, [dispatch])
+}, [currentId, dispatch])
 
   return (
     <Container maxwidth='lg'>
@@ -33,7 +33,6 @@ useEffect(() => {
             </Grid>
             <Grid item xs={12} sm={4}>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
-
             </Grid>
           </Grid>
         </Container>
