@@ -10,11 +10,7 @@ const reducer = (posts = [], action) => {
         post._id === action.payload._id ? action.payload : post
       );
     case "DELETE":
-      const index =  posts.filter(posts.indexOf((post) =>
-        post._id === action.payload._id
-      ));
-      posts.splice(index, 1)
-      return posts
+      return posts.filter((post) => post._id !== action.payload);
     default:
       return posts;
   }
